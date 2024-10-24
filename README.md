@@ -1,4 +1,5 @@
 # svelte-example
+
 An example with Svelte, SvelteKit, Typescript, Vite, Tailwind, MeltUI, and Playwright.
 
 ## Creating a project
@@ -16,6 +17,26 @@ npx sv create my-app
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+
+## Atomic design
+
+quy tắc đặt tên file: part1_part2_part3
+
+part1
+gồm tiền tố:
+
+- a => atom:
+- m => molecules:
+- o => organisms:
+- t => templates:
+
+part2: tính năng hay gì đó tương tự như là: dropdown.
+
+part3: phần mở rộng
+
+ví dụ: a-input, m-input-group, o-todo-col, t-create-todo-list.
+
+Các pages => sẽ là tập hợp 1 hoặc là nhiều mẫu (templates)
 
 ```bash
 npm run dev
