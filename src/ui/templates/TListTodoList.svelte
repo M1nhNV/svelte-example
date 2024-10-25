@@ -1,12 +1,16 @@
 <script lang="ts">
 	import OTodoCol from '../organisms/OTodoCol.svelte';
 
-	const { list }: { list: { label: string; value: string; items: [] } }[] = $props();
+	const {
+		list,
+		callback
+	}: { list: { label: string; value: string; items: [] }; callback: (data: any) => void } =
+		$props();
 	let entries = Object.entries(list);
 </script>
 
-<article class="flex">
+<article class="flex border">
 	{#each entries as [key, value]}
-		<OTodoCol title={key} items={value.items} />
+		<OTodoCol {key} title={value.label} items={value.items} {callback} />
 	{/each}
 </article>

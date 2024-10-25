@@ -16,7 +16,7 @@
 				</a>
 			</div>
 			<div class="hidden lg:flex lg:gap-x-12">
-				<a href="/todo" class="text-sm font-semibold leading-6 text-gray-900">Todo</a>
+				<a href="/todo" class="text-sm font-semibold leading-6 text-gray-900">Todo List</a>
 				<a href="/about" class="text-sm font-semibold leading-6 text-gray-900">About me</a>
 			</div>
 		</nav>

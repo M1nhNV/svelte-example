@@ -27,15 +27,46 @@
 
 	const handleCreateTodoList = (value: any) => {
 		todoList['todo'].items.push({ id: Date.now(), label: value });
-		console.log($state.snapshot(todoList));
+	};
+
+	const resetTodoList = () => {
+		todoList['todo'].items = [];
+		todoList['in_progress'].items = [];
+		todoList['tested'].items = [];
+		todoList['done'].items = [];
+	};
+
+	const handleCallback = (data: any) => {
+		if (data.type === 'remove_item') {
+			todoList[data.key].items = todoList[data.key].items.filter(
+				(item) => item.id !== data.item_id
+			);
+		}
+
+		let newList = todoList[data.key].items;
+		if (data.type === 'update_item') {
+			for (let item of newList) {
+				if (item.id === data.item_id) {
+					item.label = data.value;
+					break;
+				}
+			}
+
+			todoList[data.key].items = newList;
+		}
 	};
 </script>
 
-<main class="mx-auto max-w-7xl lg:px-8">
-	<article class="px-4 sm:px-0">
+<main class="mx-auto max-w-7xl lg:px-8 min-h-screen">
+	<article class="px-4 sm:px-0 mb-4">
 		<h3 class="text-base font-semibold leading-7 text-gray-900">Todo page</h3>
 	</article>
+
 	<MInputGroup onValueEvent={handleCreateTodoList} />
 	<hr />
-	<TListTodoList list={todoList} />
+	<button class="border-2 mt-2 mb-4 p-2 text-orange-800" type="reset" on:click={resetTodoList}
+		>Reset todo list</button
+	>
+
+	<TListTodoList list={todoList} callback={handleCallback} />
 </main>

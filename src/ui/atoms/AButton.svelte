@@ -6,4 +6,6 @@
 	};
 </script>
 
-<button class="border-2 p-2" on:click={addEvent}> Add </button>
+<button type="button" class="border-2 p-2 text-green-600" on:click={addEvent} on:keydown={addEvent}>
+	Add
+</button>
