@@ -25,7 +25,7 @@
 </script>
 
 <div class="p-1 mb-3 mt-2">
-  <div class="flex">
+  <div class="flex space-x-1">
     <AInput value={valueInput} callback={onInputEvent} />
     <AButton {onClickButton} />
   </div>

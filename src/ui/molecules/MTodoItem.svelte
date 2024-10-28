@@ -3,7 +3,7 @@
   import ATodoItem from '../atoms/ATodoItem.svelte';
   import AInput from '../atoms/AInput.svelte';
 
-  let timeOut;
+  let timeOut : number;
   let isEdit = $state(false);
   let isShowButtonDelete = $state(false);
   let valueInput = $state('');
@@ -12,7 +12,7 @@
     return callback({ type: 'remove_item', item_id: id, key: key });
   };
 
-  const handleCallbackItem = (action) => {
+  const handleCallbackItem = (action: { type: string }) => {
     if (action.type === 'item_click') {
       isEdit = true;
       valueInput = label;
@@ -40,7 +40,7 @@
   const handleMouseleave = () => {
     isShowButtonDelete = false;
   };
-  const onInputEvent = (data) => {
+  const onInputEvent = (data: { value: string}) => {
     valueInput = data.value;
   };
 
@@ -55,7 +55,7 @@
   class="block m-3"
   on:dragstart={(e) => callback({ type: 'drag_start', el: e, key: key, value: label })}
   draggable="true"
-  role='presentation'
+  role="presentation"
 >
   {#if isEdit}
     <div class="flex">

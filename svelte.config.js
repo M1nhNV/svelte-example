@@ -1,11 +1,11 @@
 import adapter from '@sveltejs/adapter-auto';
 import { preprocessMeltUI, sequence } from '@melt-ui/pp';
-
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   // Consult https://svelte.dev/docs/kit/integrations#preprocessors
   // for more information about preprocessors
   preprocess: sequence([
+    // ... other preprocessors
     preprocessMeltUI() // add to the end!
   ]),
 
