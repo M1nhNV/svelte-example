@@ -1,15 +1,15 @@
 <script lang="ts">
   let { value, callback } = $props();
 
-  const handleOnBlurEvent = (e: any) => {
+  const handleOnBlurEvent = (e: MouseEvent) => {
     callback({ type: 'blur', value: e.target.value });
   };
 
-  const handleOnInputEvent = (e: any) => {
+  const handleOnInputEvent = (e: MouseEvent) => {
     callback({ type: 'input', value: e.target.value });
   };
 
-  const handleOnKeyDown = (e: any) => {
+  const handleOnKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'Enter') {
       callback({ type: 'Enter', value: e.target.value });
     }
@@ -22,5 +22,5 @@
   on:blur={handleOnBlurEvent}
   on:keydown={handleOnKeyDown}
   type="text"
-  class="py-2 w-full px-3 pe-11 block mr-2 border border-gray-200 shadow-sm text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none light:bg-neutral-900 light:border-neutral-700 light:text-neutral-400 light:placeholder-neutral-500 light:focus:ring-neutral-600"
+  class="h-10 w-[320px] rounded-md bg-white px-3 py-2 text-magnum-700 border-magnum-700 border-2"
 />

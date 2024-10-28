@@ -8,7 +8,7 @@
     $props();
   let entries = Object.entries(list);
 
-  const handleCallback = (action) => {
+  const handleCallback = (action: { type: string}) => {
     if (action.type === 'drag_start') {
       drag(action);
       return;
@@ -16,7 +16,7 @@
 
     callback(action);
   };
-  const allowDrop = (e) => {
+  const allowDrop = (e: DragEvent)  => {
     e.preventDefault();
   };
 
@@ -41,7 +41,7 @@
   class="flex border h-screen bg-gray-300"
   on:drop={(e) => drop(e)}
   on:dragover={(e) => allowDrop(e)}
-  role='presentation'
+  role="presentation"
 >
   {#each entries as [key, value]}
     <OTodoCol {key} title={value.label} items={value.items} callback={handleCallback} />

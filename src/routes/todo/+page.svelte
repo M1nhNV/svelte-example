@@ -26,7 +26,7 @@
   });
 
   let entries = Object.entries(todoList);
-  const handleCreateTodoList = (value: any) => {
+  const handleCreateTodoList = (value: string) => {
     todoList['todo'].items.push({ id: String(Date.now()), label: value });
   };
 
@@ -82,8 +82,8 @@
   <hr />
 
   <button
-    on:click={resetTodoList}
-    class="border-2 mt-4 mb-4 p-2 border-orange-800 text-orange-800 hover:bg-orange-800 hover:text-white"
+    onclick={resetTodoList}
+    class="border-2 mt-4 mb-4 p-2 border-magnum-700 text-magnum-700 hover:bg-magnum-700 hover:text-white rounded-md"
     type="reset">Reset todo list</button
   >
 

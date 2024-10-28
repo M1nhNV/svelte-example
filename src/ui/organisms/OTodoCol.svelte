@@ -2,7 +2,7 @@
   import MTodoItem from '../molecules/MTodoItem.svelte';
   const { title = '', key, items, callback } = $props();
 
-  const handleCallbackItem = (action) => {
+  const handleCallbackItem = (action: {}) => {
     callback(action);
   };
 </script>
