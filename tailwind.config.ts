@@ -1,10 +1,10 @@
-import type { Config } from 'tailwindcss'
-import plugin from 'tailwindcss/plugin'
-import typography from '@tailwindcss/typography'
- 
+import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
+import typography from '@tailwindcss/typography';
+
 export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
- 
+
   theme: {
     container: {
       center: true,
@@ -69,11 +69,11 @@ export default {
       })
     }
   },
- 
+
   plugins: [
     typography,
     plugin(function ({ addVariant, matchUtilities, theme }) {
-      addVariant('hocus', ['&:hover', '&:focus'])
+      addVariant('hocus', ['&:hover', '&:focus']);
       // Square utility
       matchUtilities(
         {
@@ -83,7 +83,7 @@ export default {
           })
         },
         { values: theme('spacing') }
-      )
+      );
     })
   ]
-} satisfies Config
+} satisfies Config;
