@@ -1,0 +1,32 @@
+name: deployment
+run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
+on:
+  pull_request:
+    branches: [main]
+    types: [closed]
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20.x"
+      - name: Yarn install dependencies
+        run: yarn install
+      - name: Run all test
+        run: yarn test
+
+  Deployment:
+    runs-on: ubuntu-latest
+    needs: Test
+    steps:
+      - name: Deploy using ssh
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: "cd /var/www/html/svelte && bash deploy.sh"
