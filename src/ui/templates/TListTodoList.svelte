@@ -10,37 +10,38 @@
 
   const handleCallback = (action) => {
     if (action.type === 'drag_start') {
-      console.log('drag_start 2', action.el)
-      drag(action.el)
-      return
+      drag(action);
+      return;
     }
 
-    callback(action)
-  }
+    callback(action);
+  };
   const allowDrop = (e) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
 
-  const drag = (e) => {
-    console.log('drag2: ', e.target.id)
-    e.dataTransfer.setData("text", e.target.id);
-  }
+  const drag = (data) => {
+    data.el.dataTransfer.setData('id', data.el.target.id);
+    data.el.dataTransfer.setData('item_key', data.key);
+    data.el.dataTransfer.setData('item_value', data.value);
+  };
 
   const drop = (e) => {
-   // console.log('drop1: ', e)
     e.preventDefault();
-    const data = e.dataTransfer.getData("text");
-    //console.log('data: ', data)
-    //console.log('e.target.childNodes[2]: ', e.target.childNodes[2])
-    //e.target.childNodes[2].appendChild(document.getElementById(data));
-  }
+    const id = e.dataTransfer.getData('id');
+    const key = e.dataTransfer.getData('item_key');
+    const value = e.dataTransfer.getData('item_value');
+    const move_key = e.target.getAttribute('data-key');
 
+    callback({ type: 'move_item', item_id: id, key: key, move_key: move_key, value: value });
+  };
 </script>
 
 <div
   class="flex border h-screen bg-gray-300"
   on:drop={(e) => drop(e)}
   on:dragover={(e) => allowDrop(e)}
+  role='presentation'
 >
   {#each entries as [key, value]}
     <OTodoCol {key} title={value.label} items={value.items} callback={handleCallback} />

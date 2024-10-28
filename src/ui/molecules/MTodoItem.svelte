@@ -25,21 +25,21 @@
     if (action.type === 'item_leave') {
       timeOut = setTimeout(() => {
         isShowButtonDelete = false;
-      }, 200)
+      }, 200);
     }
 
     if (action.type === 'drag_start') {
-      callback(action)
+      callback(action);
     }
   };
 
   const handleMouseover = () => {
-    clearTimeout(timeOut)
+    clearTimeout(timeOut);
     isShowButtonDelete = true;
-  }
+  };
   const handleMouseleave = () => {
     isShowButtonDelete = false;
-  }
+  };
   const onInputEvent = (data) => {
     valueInput = data.value;
   };
@@ -48,14 +48,14 @@
     callback({ type: 'update_item', item_id: id, key: key, value: valueInput });
     isEdit = false;
   };
-
 </script>
 
 <div
-  id={id}
-  class="block m-3 w-20 h-20"
-  on:dragstart={(e) => callback({ type: 'drag_start', el: e})}
+  {id}
+  class="block m-3"
+  on:dragstart={(e) => callback({ type: 'drag_start', el: e, key: key, value: label })}
   draggable="true"
+  role='presentation'
 >
   {#if isEdit}
     <div class="flex">
@@ -69,7 +69,8 @@
         on:mouseover={handleMouseover}
         on:mouseleave={handleMouseleave}
         on:click={removeItem}
-        class="w-2/12 border p-1 text-red-600" >X</button>
+        class="w-2/12 border p-1 text-red-600">X</button
+      >
     {/if}
   {/if}
 </div>
