@@ -1,26 +1,52 @@
 <script lang="ts">
-  import TListTodoList from '../../ui/templates/TListTodoList.svelte';
-  import MInputGroup from '../../ui/molecules/MInputGroup.svelte';
+  import TListTodoList from '$ui/templates/TListTodoList.svelte';
+  import MInputGroup from '$ui/molecules/MInputGroup.svelte';
+  import AButton from "$ui/atoms/AButton.svelte";
 
-  let todoList = $state({
+  interface todoItem {
+    label: string,
+    id: string
+  }
+
+  interface todoCategory {
+    label: string,
+    id: string,
+    items: todoItem[]
+  }
+  interface todolistType {
+    todo: todoCategory,
+    in_progress: todoCategory,
+    tested: todoCategory,
+    done: todoCategory
+  }
+
+  interface dataUpdate {
+    type: 'remove_item' | 'update_item' | 'move_item';
+    key: keyof todolistType;
+    item_id: string;
+    value?: string;
+    move_key?: keyof todolistType;
+  }
+
+  let todoList: todolistType = $state({
     todo: {
       label: 'To do',
-      id: 0,
+      id: "0",
       items: []
     },
     in_progress: {
       label: 'In Progress',
-      id: 1,
+      id: "1",
       items: []
     },
     tested: {
       label: 'Tested',
-      id: 2,
+      id: "2",
       items: []
     },
     done: {
       label: 'Done',
-      id: 3,
+      id: "3",
       items: []
     }
   });
@@ -37,10 +63,10 @@
     todoList['done'].items = [];
   };
 
-  const handleCallback = (data: any) => {
+  const handleCallback = (data: dataUpdate) => {
     if (data.type === 'remove_item') {
       todoList[data.key].items = todoList[data.key].items.filter(
-        (item) => item.id !== data.item_id
+        (item: todoItem) => item.id !== data.item_id
       );
     }
 
@@ -48,7 +74,7 @@
 
     if (data.type === 'update_item') {
       for (let item of newList) {
-        if (String(item.id) === String(data.item_id)) {
+        if (item.id === data.item_id) {
           item.label = data.value;
           break;
         }
@@ -59,7 +85,7 @@
 
     if (data.type === 'move_item') {
       todoList[data.key].items = todoList[data.key].items.filter(
-        (item) => item.id !== data.item_id
+        (item: todoItem) => item.id !== data.item_id
       );
 
       todoList[data.move_key].items.push({ id: data.item_id, label: data.value });
@@ -80,12 +106,11 @@
     {/each}
   </div>
   <hr />
-
-  <button
-    onclick={resetTodoList}
-    class="border-2 mt-4 mb-4 p-2 border-magnum-700 text-magnum-700 hover:bg-magnum-700 hover:text-white rounded-md"
-    type="reset">Reset todo list</button
-  >
+  <AButton
+    text="Reset todo list"
+    callback={() => resetTodoList}
+    cssClass="border-2 mt-4 mb-4 p-2 border-magnum-700 text-magnum-700 hover:bg-magnum-700 hover:text-white rounded-md"
+  />
 
   <TListTodoList list={todoList} callback={handleCallback} />
 </main>

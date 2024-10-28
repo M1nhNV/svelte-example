@@ -6,6 +6,7 @@
   };
 
   const handleOnInputEvent = (e: MouseEvent) => {
+    console.log('handleOnInputEvent: ', e)
     callback({ type: 'input', value: e.target.value });
   };
 

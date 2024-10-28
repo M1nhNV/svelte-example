@@ -7,8 +7,8 @@ import ts from 'typescript-eslint';
 export default ts.config(
   js.configs.recommended,
   ...ts.configs.recommended,
-  ...svelte.configs['flat/recommended'],
   prettier,
+  // ...svelte.configs['flat/recommended'],
   ...svelte.configs['flat/prettier'],
   {
     languageOptions: {
@@ -20,7 +20,6 @@ export default ts.config(
   },
   {
     files: ['**/*.svelte'],
-
     languageOptions: {
       parserOptions: {
         parser: ts.parser

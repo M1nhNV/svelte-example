@@ -1,5 +1,5 @@
 <script lang="ts">
-  import OTodoCol from '../organisms/OTodoCol.svelte';
+  import OTodoCol from '$ui/organisms/OTodoCol.svelte';
 
   const {
     list,
@@ -7,6 +7,11 @@
   }: { list: { label: string; value: string; items: [] }; callback: (data: any) => void } =
     $props();
   let entries = Object.entries(list);
+  interface dataDragDrop {
+    el: {
+      dataTransfer: object
+    }
+  }
 
   const handleCallback = (action: { type: string}) => {
     if (action.type === 'drag_start') {
@@ -20,7 +25,7 @@
     e.preventDefault();
   };
 
-  const drag = (data) => {
+  const drag = (data: dataDragDrop) => {
     data.el.dataTransfer.setData('id', data.el.target.id);
     data.el.dataTransfer.setData('item_key', data.key);
     data.el.dataTransfer.setData('item_value', data.value);
@@ -39,7 +44,7 @@
 
 <div
   class="flex border h-screen bg-gray-300"
-  on:drop={(e) => drop(e)}
+  on:drop={(e) => drop({e : e})}
   on:dragover={(e) => allowDrop(e)}
   role="presentation"
 >
