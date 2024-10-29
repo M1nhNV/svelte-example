@@ -1,5 +1,5 @@
 <script>
-  const { text, callback, cssClass = '' } = $props()
+  const { text, callback, cssClass = '' } = $props();
 </script>
 
 <button
@@ -7,5 +7,5 @@
   class={cssClass + ' p-1 text-magnum-700 border-magnum-700 border-2 rounded-md'}
   type="button"
 >
-  { text }
+  {text}
 </button>

@@ -1,52 +1,28 @@
 <script lang="ts">
   import TListTodoList from '$ui/templates/TListTodoList.svelte';
   import MInputGroup from '$ui/molecules/MInputGroup.svelte';
-  import AButton from "$ui/atoms/AButton.svelte";
-
-  interface todoItem {
-    label: string,
-    id: string
-  }
-
-  interface todoCategory {
-    label: string,
-    id: string,
-    items: todoItem[]
-  }
-  interface todolistType {
-    todo: todoCategory,
-    in_progress: todoCategory,
-    tested: todoCategory,
-    done: todoCategory
-  }
-
-  interface dataUpdate {
-    type: 'remove_item' | 'update_item' | 'move_item';
-    key: keyof todolistType;
-    item_id: string;
-    value?: string;
-    move_key?: keyof todolistType;
-  }
+  import AButton from '$ui/atoms/AButton.svelte';
+  import type { dataUpdate, todolistType, todoItem } from '$lib/inteface';
 
   let todoList: todolistType = $state({
     todo: {
       label: 'To do',
-      id: "0",
+      id: '0',
       items: []
     },
     in_progress: {
       label: 'In Progress',
-      id: "1",
+      id: '1',
       items: []
     },
     tested: {
       label: 'Tested',
-      id: "2",
+      id: '2',
       items: []
     },
     done: {
       label: 'Done',
-      id: "3",
+      id: '3',
       items: []
     }
   });
@@ -75,7 +51,7 @@
     if (data.type === 'update_item') {
       for (let item of newList) {
         if (item.id === data.item_id) {
-          item.label = data.value;
+          item.label = String(data.value);
           break;
         }
       }
@@ -88,14 +64,16 @@
         (item: todoItem) => item.id !== data.item_id
       );
 
-      todoList[data.move_key].items.push({ id: data.item_id, label: data.value });
+      if (data.move_key !== undefined) {
+        todoList[data.move_key].items.push({ id: data.item_id, label: String(data.value) });
+      }
     }
   };
 </script>
 
 <main class="mx-auto max-w-7xl lg:px-8 min-h-screen">
   <article class="px-4 sm:px-0 mb-4">
-    <h3 class="text-base font-semibold leading-7 text-gray-900">Todo page</h3>
+    <h3 class="text-base leading-7 text-gray-900">Todo page</h3>
   </article>
 
   <MInputGroup onValueEvent={handleCreateTodoList} />
