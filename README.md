@@ -2,41 +2,34 @@
 
 An example with Svelte, SvelteKit, Typescript, Vite, Tailwind, MeltUI, and Playwright.
 
-## Creating a project
+## File Naming Convention
+> part1_part2_part3.svelte
 
-If you're seeing this, you've probably already done this step. Congrats!
+### Part1
+This part includes a prefix that corresponds to the design level:
 
-```bash
-# create a new project in the current directory
-npx sv create
+- **A** => Atom (e.g., `AInput`, `AButton`)
+- **M** => Molecule (e.g., `MInputGroup`, `MCardHeader`)
+- **O** => Organism (e.g., `OTodoList`, `ONavBar`)
+- **T** => Template (e.g., `TUserProfile`, `TDashboard`)
 
-# create a new project in my-app
-npx sv create my-app
-```
+### Part2
+The second part should reflect the specific function, feature, or purpose of the component. Common component features like "dropdown," "modal," or "form" would be used here to identify functionality.
+
+- **Examples**:
+    - `ADropdown`: An atomic dropdown menu.
+    - `MSearchBar`: A molecule combining input and button for a search feature.
+    - `OLoginForm`: An organism representing a login form.
+
+### Part3
+The third part can be used to denote specific extensions or modifications if necessary, such as variants, states, or additional descriptors. This part is optional but helpful in certain contexts, especially for variations in design.
+
+- **Examples**:
+    - `ADropdown_Expanded`: An atom representing the expanded state of a dropdown.
+    - `MCard_Header`: Molecule specifically for a header within a card component.
+    - `OProductList_Collapsed`: An organism listing products, with a collapsed option.
 
 ## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-## Atomic design
-
-quy tắc đặt tên file: part1_part2_part3
-
-part1
-gồm tiền tố:
-
-- a => atom:
-- m => molecules:
-- o => organisms:
-- t => templates:
-
-part2: tính năng hay gì đó tương tự như là: dropdown.
-
-part3: phần mở rộng
-
-ví dụ: a-input, m-input-group, o-todo-col, t-create-todo-list.
-
-Các pages => sẽ là tập hợp 1 hoặc là nhiều mẫu (templates)
 
 ```bash
 npm run dev

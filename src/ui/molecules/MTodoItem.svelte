@@ -1,9 +1,9 @@
 <script lang="ts">
   const { id, label, callback, key } = $props();
-  import ATodoItem from '../atoms/ATodoItem.svelte';
-  import AInput from '../atoms/AInput.svelte';
+  import ATodoItem from '$ui/atoms/ATodoItem.svelte';
+  import AInput from '$ui/atoms/AInput.svelte';
 
-  let timeOut : number;
+  let timeOut: number;
   let isEdit = $state(false);
   let isShowButtonDelete = $state(false);
   let valueInput = $state('');
@@ -40,7 +40,7 @@
   const handleMouseleave = () => {
     isShowButtonDelete = false;
   };
-  const onInputEvent = (data: { value: string}) => {
+  const onInputEvent = (data: { value: string }) => {
     valueInput = data.value;
   };
 

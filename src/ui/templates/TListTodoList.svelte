@@ -1,14 +1,23 @@
 <script lang="ts">
-  import OTodoCol from '../organisms/OTodoCol.svelte';
+  import OTodoCol from '$ui/organisms/OTodoCol.svelte';
+  import type { dataDragDrop, elDragDrop, todoCategory } from '$lib/inteface.ts';
 
   const {
     list,
     callback
-  }: { list: { label: string; value: string; items: [] }; callback: (data: any) => void } =
-    $props();
+  }: {
+    list: todoCategory;
+    callback: (data: {
+      item_id: string;
+      move_key: string;
+      type: string;
+      value: string;
+      key: string;
+    }) => void;
+  } = $props();
   let entries = Object.entries(list);
 
-  const handleCallback = (action: { type: string}) => {
+  const handleCallback = (action: dataDragDrop) => {
     if (action.type === 'drag_start') {
       drag(action);
       return;
@@ -16,29 +25,30 @@
 
     callback(action);
   };
-  const allowDrop = (e: DragEvent)  => {
+  const allowDrop = (e: DragEvent) => {
     e.preventDefault();
   };
 
-  const drag = (data) => {
+  const drag = (data: dataDragDrop) => {
     data.el.dataTransfer.setData('id', data.el.target.id);
     data.el.dataTransfer.setData('item_key', data.key);
     data.el.dataTransfer.setData('item_value', data.value);
   };
 
-  const drop = (e) => {
+  const drop = (e: elDragDrop) => {
     e.preventDefault();
-    const id = e.dataTransfer.getData('id');
-    const key = e.dataTransfer.getData('item_key');
-    const value = e.dataTransfer.getData('item_value');
-    const move_key = e.target.getAttribute('data-key');
-
-    callback({ type: 'move_item', item_id: id, key: key, move_key: move_key, value: value });
+    callback({
+      type: 'move_item',
+      item_id: e.dataTransfer.getData('id'),
+      key: e.dataTransfer.getData('item_key'),
+      move_key: e.target.getAttribute('data-key'),
+      value: e.dataTransfer.getData('item_value')
+    });
   };
 </script>
 
 <div
-  class="flex border h-screen bg-gray-300"
+  class="flex border h-screen bg-amber-50"
   on:drop={(e) => drop(e)}
   on:dragover={(e) => allowDrop(e)}
   role="presentation"
