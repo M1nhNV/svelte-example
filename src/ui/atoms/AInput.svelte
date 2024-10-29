@@ -1,7 +1,8 @@
 <script lang="ts">
   import type { eventTarget } from '$lib/inteface';
 
-  let { value, callback } = $props();
+  export let value = '';
+  export let callback = () => {};
 
   const handleOnBlurEvent = (e: eventTarget) => {
     callback({ type: 'blur', value: e.target.value });

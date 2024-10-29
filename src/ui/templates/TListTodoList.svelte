@@ -2,7 +2,7 @@
   import OTodoCol from '$ui/organisms/OTodoCol.svelte';
   import type { dataDragDrop, elDragDrop, todoCategory } from '$lib/inteface.ts';
 
-  const {
+  let {
     list,
     callback
   }: {

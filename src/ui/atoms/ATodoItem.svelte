@@ -1,5 +1,7 @@
 <script lang="ts">
-  const { label, id, callback } = $props();
+  export let label = '';
+  export let id = '';
+  export let callback = () => {};
 </script>
 
 <p

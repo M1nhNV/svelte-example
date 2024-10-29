@@ -1,5 +1,5 @@
 <script lang="ts">
-  const { id, label, callback, key } = $props();
+  let { id, label, callback, key } = $props();
   import ATodoItem from '$ui/atoms/ATodoItem.svelte';
   import AInput from '$ui/atoms/AInput.svelte';
 

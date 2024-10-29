@@ -1,6 +1,6 @@
 <script lang="ts">
   import MTodoItem from '$ui/molecules/MTodoItem.svelte';
-  const { title = '', key, items, callback } = $props();
+  let { title = '', key, items, callback } = $props();
 </script>
 
 <article data-key={key} class="flex flex-col content-center w-1/4 border-l-2">
