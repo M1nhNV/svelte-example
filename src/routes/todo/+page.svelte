@@ -81,7 +81,7 @@
   <hr />
   <div class="flex space-x-1 w-1/2 m-3">
     {#each entries as [key, value]}
-      <span class="w-32" data-key={key}>{value.label}: {value.items.length}</span>
+      <span class="block w-32" data-key={key}>{value.label}: {value.items.length}</span>
     {/each}
   </div>
   <hr />
