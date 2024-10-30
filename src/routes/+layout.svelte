@@ -15,7 +15,7 @@
           <img class="h-8 w-auto" src={srcLogo} alt="logo" />
         </a>
       </div>
-      <div class="hidden lg:flex lg:gap-x-12">
+      <div class="lg:flex lg:gap-x-12">
         <a href="/" class="text-sm leading-6 text-magnum-700">Home Page</a>
         <a href="/todo" class="text-sm leading-6 text-magnum-700">Todo List</a>
       </div>
