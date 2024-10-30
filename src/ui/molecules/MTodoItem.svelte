@@ -1,5 +1,5 @@
 <script lang="ts">
-  const { id, label, callback, key } = $props();
+  let { id, label, callback, key } = $props();
   import ATodoItem from '$ui/atoms/ATodoItem.svelte';
   import AInput from '$ui/atoms/AInput.svelte';
 
@@ -53,22 +53,23 @@
 <div
   {id}
   class="block m-3"
-  on:dragstart={(e) => callback({ type: 'drag_start', el: e, key: key, value: label })}
+  ondragstart={(e) => callback({ type: 'drag_start', el: e, key: key, value: label })}
   draggable="true"
   role="presentation"
 >
   {#if isEdit}
     <div class="flex">
       <AInput value={valueInput} callback={onInputEvent} />
-      <button class="w-2/12 border p-1 text-green-600" on:click={updateItem}>U</button>
+      <button class="w-2/12 border p-1 text-green-600" onclick={updateItem}>U</button>
     </div>
   {:else}
     <ATodoItem {label} {id} callback={handleCallbackItem} />
     {#if isShowButtonDelete}
       <button
-        on:mouseover={handleMouseover}
-        on:mouseleave={handleMouseleave}
-        on:click={removeItem}
+        onmouseover={handleMouseover}
+        onfocus={handleMouseover}
+        onmouseleave={handleMouseleave}
+        onclick={removeItem}
         class="w-2/12 border p-1 text-red-600">X</button
       >
     {/if}

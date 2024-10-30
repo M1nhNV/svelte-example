@@ -2,7 +2,7 @@
   import OTodoCol from '$ui/organisms/OTodoCol.svelte';
   import type { dataDragDrop, elDragDrop, todoCategory } from '$lib/inteface.ts';
 
-  const {
+  let {
     list,
     callback
   }: {
@@ -36,7 +36,6 @@
   };
 
   const drop = (e: elDragDrop) => {
-    e.preventDefault();
     callback({
       type: 'move_item',
       item_id: e.dataTransfer.getData('id'),
@@ -44,13 +43,14 @@
       move_key: e.target.getAttribute('data-key'),
       value: e.dataTransfer.getData('item_value')
     });
+    e.preventDefault();
   };
 </script>
 
 <div
   class="flex border h-screen bg-amber-50"
-  on:drop={(e) => drop(e)}
-  on:dragover={(e) => allowDrop(e)}
+  ondrop={drop}
+  ondragover={allowDrop}
   role="presentation"
 >
   {#each entries as [key, value]}

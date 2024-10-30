@@ -40,6 +40,7 @@
   };
 
   const handleCallback = (data: dataUpdate) => {
+    console.log('data: ', data);
     if (data.type === 'remove_item') {
       todoList[data.key].items = todoList[data.key].items.filter(
         (item: todoItem) => item.id !== data.item_id
@@ -86,7 +87,7 @@
   <hr />
   <AButton
     text="Reset todo list"
-    callback={() => resetTodoList}
+    callback={() => resetTodoList()}
     cssClass="border-2 mt-4 mb-4 p-2 border-magnum-700 text-magnum-700 hover:bg-magnum-700 hover:text-white rounded-md"
   />
 

@@ -16,9 +16,8 @@
         </a>
       </div>
       <div class="hidden lg:flex lg:gap-x-12">
-        <a href="/" class="text-sm font-semibold leading-6 text-magnum-700">Home Page</a>
-        <a href="/todo" class="text-sm font-semibold leading-6 text-magnum-700">Todo List</a>
-        <a href="/about" class="text-sm font-semibold leading-6 text-magnum-700">About me</a>
+        <a href="/" class="text-sm leading-6 text-magnum-700">Home Page</a>
+        <a href="/todo" class="text-sm leading-6 text-magnum-700">Todo List</a>
       </div>
     </nav>
   </header>
