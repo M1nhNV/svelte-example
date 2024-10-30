@@ -25,7 +25,7 @@
 </script>
 
 <div class="p-1 mb-3 mt-2">
-  <div class="flex space-x-1">
+  <div class="flex space-x-1" data-testid="input-group">
     <AInput value={valueInput} callback={onInputEvent} />
     <AButton text="add" callback={onClickButton}></AButton>
   </div>
