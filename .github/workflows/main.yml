@@ -18,7 +18,7 @@ jobs:
         run: yarn install
       - name: Install playwright browser
         run: yarn playwright install --with-deps
-      - name: Run Prisma
+      - name: Run Prisma generate
         run: npx prisma generate
       - name: Run all test
         run: yarn test

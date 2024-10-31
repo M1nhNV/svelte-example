@@ -154,15 +154,15 @@
   <div class="flex items-center flex-wrap space-x-3.5 m-3">
     <p>Accounts:</p>
     <ul>
-    {#each users as user}
-      <li
-        onclick={() => handleLoadTodoOfUser(user.id, user.user)}
-        class={`border p-1 m-2 rounded inline-block ${user.id === activeAccount ? 'float font-bold text-white bg-magnum-700 ' : ''}}`}
-      >
-        {user.id} -
-        {user.user}</li
-      >
-    {/each}
+      {#each users as user}
+        <li
+          onclick={() => handleLoadTodoOfUser(user.id, user.user)}
+          class={`border p-1 m-2 rounded inline-block ${user.id === activeAccount ? 'float font-bold text-white bg-magnum-700 ' : ''}}`}
+        >
+          {user.id} -
+          {user.user}
+        </li>
+      {/each}
     </ul>
   </div>
 

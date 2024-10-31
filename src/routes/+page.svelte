@@ -10,7 +10,8 @@
     </p>
     <p
       data-testid="description-2"
-      class="mt-6 text-pretty text-lg font-medium text-magnum-600 sm:text-xl/8">
+      class="mt-6 text-pretty text-lg font-medium text-magnum-600 sm:text-xl/8"
+    >
       This project uses Prisma as the ORM and SQLite3 as the database.
     </p>
     <a
