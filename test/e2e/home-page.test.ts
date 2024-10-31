@@ -4,8 +4,11 @@ const urlGithub = 'https://github.com/M1nhNV/svelte-example';
 test('Home page has expected h1', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('h1')).toHaveText('Home Page');
-  await expect(page.locator('p')).toHaveText(
-    'An example with Svelte, SvelteKit, Typescript, Vite, Tailwind, MeltUI, and Playwright.'
+  await expect(page.getByTestId('description-1')).toContainText(
+    'A sample project built with Svelte, SvelteKit, TypeScript, Vite, Tailwind, MeltUI, and Playwright.'
+  );
+  await expect(page.getByTestId('description-2')).toContainText(
+    'This project uses Prisma as the ORM and SQLite3 as the database.'
   );
 });
 
@@ -16,7 +19,7 @@ test('Home page has link to repository', async ({ page }) => {
 
   expect(linkRepository).toEqual(urlGithub);
 
-  await expect(aTagLocator).toHaveText('Github Repository');
+  await expect(aTagLocator).toHaveText('GitHub Repository');
 });
 
 test('Open link repository, check github title repository', async ({ page, context }) => {
