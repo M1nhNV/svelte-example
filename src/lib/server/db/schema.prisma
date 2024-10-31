@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:db.sqlite"
+}
+
+model SequelizeMeta {
+  name String @id
+}
+
+model Todo {
+  id    Int    @id @default(autoincrement())
+  user String
+  content String
+}

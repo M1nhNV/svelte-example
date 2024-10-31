@@ -56,11 +56,6 @@ interface dataUpdate {
   move_key?: keyof todolistType;
 }
 
-interface eventCallback {
-  type: string;
-  value: string;
-}
-
 export {
   elDragDrop,
   dataDragDrop,
@@ -69,6 +64,5 @@ export {
   todolistType,
   dataUpdate,
   dataTransfer,
-  eventTarget,
-  eventCallback
+  eventTarget
 };

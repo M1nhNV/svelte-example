@@ -7,4 +7,6 @@ git pull origin main
 yarn install
 yarn build
 
+npx prisma db push
+
 pm2 restart svelte

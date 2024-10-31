@@ -3,7 +3,7 @@
   import AButton from '../atoms/AButton.svelte';
 
   let valueInput = $state('');
-  let { onValueEvent } = $props();
+  let { onValueEvent, placeholder, buttonText } = $props();
 
   const onClickButton = () => {
     if (valueInput !== '') {
@@ -26,7 +26,7 @@
 
 <div class="p-1 mb-3 mt-2">
   <div class="flex space-x-1" data-testid="input-group">
-    <AInput value={valueInput} callback={onInputEvent} />
-    <AButton text="add" callback={onClickButton}></AButton>
+    <AInput {placeholder} value={valueInput} callback={onInputEvent} />
+    <AButton text={buttonText} callback={onClickButton}></AButton>
   </div>
 </div>
