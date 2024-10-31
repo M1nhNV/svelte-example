@@ -36,14 +36,17 @@
   };
 
   const drop = (e: elDragDrop) => {
-    callback({
-      type: 'move_item',
-      item_id: e.dataTransfer.getData('id'),
-      key: e.dataTransfer.getData('item_key'),
-      move_key: e.target.getAttribute('data-key'),
-      value: e.dataTransfer.getData('item_value')
-    });
     e.preventDefault();
+
+    if (e.target.getAttribute('data-key')) {
+      callback({
+        type: 'move_item',
+        item_id: e.dataTransfer.getData('id'),
+        key: e.dataTransfer.getData('item_key'),
+        move_key: e.target.getAttribute('data-key'),
+        value: e.dataTransfer.getData('item_value')
+      });
+    }
   };
 </script>
 

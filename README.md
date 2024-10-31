@@ -2,6 +2,8 @@
 
 An example with Svelte, SvelteKit, Typescript, Vite, Tailwind, MeltUI, and Playwright.
 
+Live example: https://svelte.nvminh.com/
+
 ## File Naming Convention
 
 > part1_part2_part3.svelte
