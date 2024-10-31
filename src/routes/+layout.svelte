@@ -17,7 +17,9 @@
       </div>
       <div class="lg:flex lg:gap-x-12">
         <a href="/" class="text-sm leading-6 text-magnum-700">Home Page</a>
-        <a href="/todo" class="text-sm leading-6 text-magnum-700">Todo List</a>
+        <a data-testid="nav-link-top-todo" href="/todo" class="text-sm leading-6 text-magnum-700"
+          >Todo List</a
+        >
       </div>
     </nav>
   </header>

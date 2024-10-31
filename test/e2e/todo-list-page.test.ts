@@ -2,8 +2,8 @@ import { expect, test } from '@playwright/test';
 
 async function createNewItem(page, itemName) {
   await page.goto('/todo');
-  await page.getByPlaceholder('input').fill(itemName);
-  await page.getByRole('button', { name: /add/i }).click();
+  await page.getByPlaceholder('new item').fill(itemName);
+  await page.getByRole('button', { name: /Add item/i }).click();
 }
 
 test('Create item to list', async ({ page }) => {
