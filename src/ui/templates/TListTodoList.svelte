@@ -50,6 +50,12 @@
   };
 </script>
 
+<div class="flex space-x-1 w-1/2 m-3">
+  {#each entries as [key, value]}
+    <span class="block w-32" data-key={key}>{value.label}: {value.items.length}</span>
+  {/each}
+</div>
+
 <div
   class="flex border h-screen bg-amber-50"
   ondrop={drop}

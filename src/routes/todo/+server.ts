@@ -31,3 +31,15 @@ export async function PUT({ request }) {
 
   return json({ status: true, content: [] }, { status: 200 });
 }
+
+export async function DELETE({ request }) {
+  const { id } = await request.json();
+  console.log(id);
+  await prisma.todo.delete({
+    where: {
+      id
+    }
+  });
+
+  return json({ status: true, content: [] }, { status: 200 });
+}
