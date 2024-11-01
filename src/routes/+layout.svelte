@@ -1,6 +1,8 @@
 <script>
   import '../app.css';
   const srcLogo = '/favicon.png';
+  import MToast from '$ui/molecules/MToast.svelte';
+  import MDialog from '$ui/molecules/MDialog.svelte';
 </script>
 
 <main>
@@ -24,4 +26,6 @@
     </nav>
   </header>
   <slot />
+  <MDialog />
+  <MToast />
 </main>
